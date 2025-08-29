@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trung tâm Giải toán Nâng cao - Công cụ Tiện ích</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script src="lib/math.min.js"></script>
+    <script src="ephemeral-core.js" defer></script>
+  </head>
+  <body>
+    <div class="container math-solver-container">
+      <a href="../index.html" class="back-link">← Quay lại trang chủ</a>
+      <h1>Trung tâm Giải toán</h1>
+      <p class="subtitle">
+        Giải các bài toán từ số học cơ bản đến giải tích, ma trận và thống kê.
+      </p>
+
+      <!-- CATEGORY TABS -->
+      <div
+        class="qr-tabs"
+        id="math-category-tabs"
+        style="justify-content: center; flex-wrap: wrap"
+      >
+        <button class="tab-btn active" data-tab="arithmetic">Số học</button>
+        <button class="tab-btn" data-tab="algebra">Đại số</button>
+        <button class="tab-btn" data-tab="geometry">Hình học</button>
+        <button class="tab-btn" data-tab="calculus">Giải tích</button>
+        <button class="tab-btn" data-tab="matrices">Ma trận</button>
+        <button class="tab-btn" data-tab="statistics">Thống kê</button>
+        <button class="tab-btn" data-tab="evaluator">Máy tính Biểu thức</button>
+      </div>
+
+      <!-- MATH TOOL CONTROLS -->
+      <div id="math-controls-wrapper">
+        <div class="math-tool-controls">
+          <div class="form-group">
+            <label for="math-problem-select">Chọn loại bài toán:</label>
+            <select id="math-problem-select"></select>
+          </div>
+          <button id="solve-btn" class="btn">Giải Bài Toán</button>
+        </div>
+      </div>
+
+      <!-- INPUTS & OUTPUTS -->
+      <div class="math-solver-layout">
+        <div class="input-pane">
+          <h3><span class="material-symbols-outlined">edit</span> Đầu vào</h3>
+          <div id="dynamic-inputs">
+            <p class="placeholder-text">Chọn một loại bài toán để bắt đầu.</p>
+          </div>
+        </div>
+        <div class="output-pane">
+          <h3>
+            <span class="material-symbols-outlined">functions</span> Kết quả
+          </h3>
+          <div id="solution-output">
+            <!-- Nội dung kết quả sẽ được chèn vào đây -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="math_solver_logic.js" defer></script>
+  </body>
+</html>

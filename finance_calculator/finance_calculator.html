@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trung tâm Tài chính - Công cụ Tiện ích</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- Thư viện biểu đồ Chart.js -->
+    <script src="lib/chart.js"></script>
+    <script src="ephemeral-core.js" defer></script>
+  </head>
+  <body>
+    <div class="container" style="max-width: 800px">
+      <a href="../index.html" class="back-link">← Quay lại trang chủ</a>
+      <h1>Trung tâm Phân tích Tài chính</h1>
+      <p class="subtitle">
+        Công cụ giúp bạn lập kế hoạch đầu tư, tiết kiệm và quản lý các khoản
+        vay.
+      </p>
+
+      <div class="qr-tabs" style="justify-content: center">
+        <button class="tab-btn active" data-tab="compound">Tính Lãi Kép</button>
+        <button class="tab-btn" data-tab="savings">
+          Lập kế hoạch Tiết kiệm
+        </button>
+        <button class="tab-btn" data-tab="loan">Tính toán Khoản vay</button>
+      </div>
+
+      <!-- Chức năng 1: Lãi Kép -->
+      <div class="tab-content active" id="tab-compound">
+        <div class="finance-grid">
+          <!-- Cột nhập liệu -->
+          <div class="input-col">
+            <div class="form-group">
+              <label for="cp-principal">Vốn ban đầu (VND)</label
+              ><input type="text" id="cp-principal" value="10,000,000" />
+            </div>
+            <div class="form-group">
+              <label for="cp-contribution">Đóng góp hàng tháng (VND)</label
+              ><input type="text" id="cp-contribution" value="1,000,000" />
+            </div>
+            <div class="form-group">
+              <label for="cp-rate">Lãi suất hàng năm (%)</label
+              ><input type="number" id="cp-rate" value="8" />
+            </div>
+            <div class="form-group">
+              <label for="cp-time">Thời gian (năm)</label
+              ><input type="number" id="cp-time" value="10" />
+            </div>
+          </div>
+          <!-- Cột kết quả -->
+          <div class="result-col">
+            <div class="result-summary">
+              <div class="summary-item">
+                <span>Tổng số dư</span
+                ><strong id="cp-total-balance">...</strong>
+              </div>
+              <div class="summary-item">
+                <span>Tổng vốn gốc</span
+                ><strong id="cp-total-principal">...</strong>
+              </div>
+              <div class="summary-item success">
+                <span>Tổng tiền lãi</span
+                ><strong id="cp-total-interest">...</strong>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="compoundChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chức năng 2: Kế hoạch Tiết kiệm -->
+      <div class="tab-content" id="tab-savings">
+        <p class="subtitle" style="margin-top: 20px">
+          Tôi cần tiết kiệm bao nhiêu mỗi tháng để đạt được mục tiêu?
+        </p>
+        <div class="finance-grid-single">
+          <div class="form-group">
+            <label for="sg-goal">Mục tiêu tài chính (VND)</label
+            ><input type="text" id="sg-goal" value="1,000,000,000" />
+          </div>
+          <div class="form-group">
+            <label for="sg-time">Trong bao nhiêu năm?</label
+            ><input type="number" id="sg-time" value="15" />
+          </div>
+          <div class="form-group">
+            <label for="sg-rate">Với lãi suất hàng năm (%)</label
+            ><input type="number" id="sg-rate" value="8" />
+          </div>
+        </div>
+        <div class="result-display" style="text-align: center">
+          <h3>Bạn cần tiết kiệm:</h3>
+          <p id="sg-result" class="result-text" style="font-size: 2em"></p>
+          <p class="rate-info">mỗi tháng để đạt được mục tiêu của mình.</p>
+        </div>
+      </div>
+
+      <!-- Chức năng 3: Tính toán Khoản vay -->
+      <div class="tab-content" id="tab-loan">
+        <div class="finance-grid">
+          <!-- Cột nhập liệu -->
+          <div class="input-col">
+            <div class="form-group">
+              <label for="ln-amount">Số tiền vay (VND)</label
+              ><input type="text" id="ln-amount" value="500,000,000" />
+            </div>
+            <div class="form-group">
+              <label for="ln-rate">Lãi suất hàng năm (%)</label
+              ><input type="number" id="ln-rate" value="7.5" />
+            </div>
+            <div class="form-group">
+              <label for="ln-term">Kỳ hạn vay (năm)</label
+              ><input type="number" id="ln-term" value="20" />
+            </div>
+          </div>
+          <!-- Cột kết quả -->
+          <div class="result-col">
+            <div class="result-summary">
+              <div class="summary-item">
+                <span>Trả góp hàng tháng</span
+                ><strong id="ln-monthly-payment">...</strong>
+              </div>
+              <div class="summary-item">
+                <span>Tổng số tiền phải trả</span
+                ><strong id="ln-total-payment">...</strong>
+              </div>
+              <div class="summary-item danger">
+                <span>Tổng lãi phải trả</span
+                ><strong id="ln-total-interest">...</strong>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="loanChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="finance_calculator_logic.js" defer></script>
+  </body>
+</html>

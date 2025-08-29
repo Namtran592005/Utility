@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Công cụ Phân tích Sức khỏe - Công cụ Tiện ích</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script src="ephemeral-core.js" defer></script>
+  </head>
+  <body>
+    <div class="container" style="max-width: 800px">
+      <a href="../index.html" class="back-link">← Quay lại trang chủ</a>
+      <h1>Công cụ Phân tích Sức khỏe</h1>
+      <p class="subtitle">
+        Nhập các chỉ số của bạn để có một cái nhìn toàn diện về sức khỏe và thể
+        chất.
+      </p>
+
+      <!-- KHỐI NHẬP LIỆU CHUNG -->
+      <div class="input-panel">
+        <div class="form-group">
+          <label>Giới tính</label>
+          <div class="radio-group">
+            <label
+              ><input type="radio" name="sex" value="male" checked /> Nam</label
+            >
+            <label><input type="radio" name="sex" value="female" /> Nữ</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="age">Tuổi</label>
+          <input type="number" id="age" value="20" min="1" max="120" />
+        </div>
+        <div class="form-group">
+          <label for="height">Chiều cao (cm)</label>
+          <input type="number" id="height" value="162" min="50" max="250" />
+        </div>
+        <div class="form-group">
+          <label for="weight">Cân nặng (kg)</label>
+          <input type="number" id="weight" value="55" min="1" max="500" />
+        </div>
+      </div>
+
+      <!-- KHỐI KẾT QUẢ -->
+      <div class="results-panel">
+        <!-- 1. BMI -->
+        <details class="health-result-card" open>
+          <summary>
+            <span>Chỉ số khối cơ thể (BMI)</span>
+            <strong id="bmi-value">...</strong>
+          </summary>
+          <div class="card-content">
+            <div class="gauge-container">
+              <div class="gauge-bar" id="bmi-gauge-bar">
+                <div class="gauge-marker" id="bmi-marker"></div>
+              </div>
+              <div class="gauge-labels">
+                <span>Gầy</span><span>Bình thường</span><span>Thừa cân</span
+                ><span>Béo phì</span>
+              </div>
+            </div>
+            <p id="bmi-category">...</p>
+          </div>
+        </details>
+
+        <!-- 2. Body Fat -->
+        <details class="health-result-card">
+          <summary>
+            <span>Tỷ lệ mỡ cơ thể (BFP - Ước tính)</span>
+            <strong id="bfp-value">...</strong>
+          </summary>
+          <div class="card-content">
+            <!-- SỬA DÒNG GHI CHÚ NÀY -->
+            <p class="note">
+              Nhập số đo vòng cổ, eo và hông để tính. Đo tại điểm nhỏ nhất.
+            </p>
+            <div class="extra-inputs">
+              <div class="form-group">
+                <label for="neck">Vòng cổ (cm)</label>
+                <input
+                  type="number"
+                  id="neck"
+                  placeholder="VD: 38"
+                  min="10"
+                  max="100"
+                />
+              </div>
+              <div class="form-group">
+                <label for="waist">Vòng eo (cm)</label>
+                <input
+                  type="number"
+                  id="waist"
+                  placeholder="VD: 80"
+                  min="20"
+                  max="200"
+                />
+              </div>
+              <!-- XÓA CLASS "female-only" Ở ĐÂY -->
+              <div class="form-group">
+                <label for="hip">Vòng hông (cm)</label>
+                <input
+                  type="number"
+                  id="hip"
+                  placeholder="VD: 95"
+                  min="20"
+                  max="200"
+                />
+              </div>
+            </div>
+            <p id="bfp-category">...</p>
+          </div>
+        </details>
+
+        <!-- 3. BMR & TDEE -->
+        <details class="health-result-card">
+          <summary>
+            <span>Lượng Calo cần thiết (TDEE)</span>
+            <strong id="tdee-value">... Kcal/ngày</strong>
+          </summary>
+          <div class="card-content">
+            <p>
+              BMR (Tỷ lệ trao đổi chất cơ bản):
+              <strong id="bmr-value">...</strong> Kcal/ngày.
+            </p>
+            <div class="form-group">
+              <label for="activity-level">Mức độ hoạt động của bạn:</label>
+              <select id="activity-level">
+                <option value="1.2">Ít vận động (công việc văn phòng)</option>
+                <option value="1.375" selected>
+                  Vận động nhẹ (1-3 ngày/tuần)
+                </option>
+                <option value="1.55">Vận động vừa (3-5 ngày/tuần)</option>
+                <option value="1.725">Vận động nhiều (6-7 ngày/tuần)</option>
+                <option value="1.9">
+                  Vận động rất nhiều (công việc thể chất)
+                </option>
+              </select>
+            </div>
+            <div class="tdee-table">
+              <h4>Mục tiêu cân nặng và lượng calo đề xuất:</h4>
+              <div class="tdee-row">
+                <span>Duy trì cân nặng: </span
+                ><strong id="tdee-maintain">...</strong>
+              </div>
+              <div class="tdee-row">
+                <span>Giảm cân nhẹ (~0.5kg/tuần): </span
+                ><strong id="tdee-loss">...</strong>
+              </div>
+              <div class="tdee-row">
+                <span>Tăng cân nhẹ (~0.5kg/tuần): </span
+                ><strong id="tdee-gain">...</strong>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- 4. Giá trị dinh dưỡng khuyến nghị (Macro-nutrients) -->
+        <details class="health-result-card">
+          <summary>
+            <span>Giá trị dinh dưỡng (Macros)</span>
+            <strong id="macros-summary">...</strong>
+          </summary>
+          <div class="card-content">
+            <div class="form-group">
+              <label for="goal-type">Mục tiêu:</label>
+              <select id="goal-type">
+                <option value="maintain" selected>Duy trì cân nặng</option>
+                <option value="loss">Giảm cân</option>
+                <option value="gain">Tăng cân</option>
+              </select>
+            </div>
+            <p class="note">
+              Tỷ lệ khuyến nghị (Carb: 50%, Protein: 25%, Fat: 25%)
+            </p>
+            <div class="results-table">
+              <table>
+                <tr>
+                  <td>Carbohydrate</td>
+                  <td id="carb-g">... g</td>
+                </tr>
+                <tr>
+                  <td>Protein</td>
+                  <td id="protein-g">... g</td>
+                </tr>
+                <tr>
+                  <td>Chất béo</td>
+                  <td id="fat-g">... g</td>
+                </tr>
+              </table>
+            </div>
+            <p class="rate-info">
+              Lưu ý: Đây là ước tính. Tham khảo chuyên gia dinh dưỡng để có kế
+              hoạch phù hợp nhất.
+            </p>
+          </div>
+        </details>
+
+        <!-- 5. Lượng nước cần uống hàng ngày -->
+        <details class="health-result-card">
+          <summary>
+            <span>Lượng nước cần uống hàng ngày</span>
+            <strong id="water-intake-value">... lít</strong>
+          </summary>
+          <div class="card-content">
+            <p id="water-intake-recommendation">...</p>
+            <p class="rate-info">
+              Uống đủ nước là rất quan trọng cho sức khỏe tổng thể.
+            </p>
+          </div>
+        </details>
+
+        <!-- 6. Các chỉ số khác (WHR, WHtR, PI) -->
+        <details class="health-result-card">
+          <summary>
+            <span>Các chỉ số khác</span>
+          </summary>
+          <div class="card-content">
+            <div class="results-table">
+              <table>
+                <tr>
+                  <td>Cân nặng lý tưởng</td>
+                  <td id="ideal-weight-value">...</td>
+                </tr>
+                <tr>
+                  <td>Tỷ lệ eo/hông (WHR)</td>
+                  <td>
+                    <span id="whr-value">...</span>
+                    <em id="whr-risk" class="note"></em>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tỷ lệ eo/chiều cao (WHtR)</td>
+                  <td>
+                    <span id="whtr-value">...</span>
+                    <em id="whtr-risk" class="note"></em>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Chỉ số Ponderal (PI)</td>
+                  <td>
+                    <span id="pi-value">...</span>
+                    <em id="pi-category" class="note"></em>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <script src="health_calculator_logic.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Công cụ Tiện ích</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="ephemeral-core.js" defer></script>
+  </head>
+  <body>
+    <!-- THAY ĐỔI: Bọc cả hero-section và panel mới trong một container chung -->
+    <main class="container">
+      <!-- Hero section vẫn giữ nguyên ở ngoài -->
+      <section class="hero-section">
+        <h1>Công cụ Tiện ích</h1>
+        <p class="subtitle">
+          Bộ sưu tập các công cụ đơn giản, mạnh mẽ giúp bạn giải quyết công việc
+          hàng ngày một cách nhanh chóng.
+        </p>
+      </section>
+
+      <!-- THAY ĐỔI: Panel mới làm nền cho các công cụ -->
+      <div class="main-content-panel">
+        <section class="tool-grid">
+          <!-- Trong tệp index.html, sửa thẻ a này -->
+          <a href="./converter_hub/converter_hub.html" class="tool-card">
+            <span class="material-symbols-outlined icon"
+              >currency_exchange</span
+            >
+            <span class="tool-name">Chuyển đổi</span>
+          </a>
+
+          <a href="./qr_code/qr_code.html" class="tool-card">
+            <span class="material-symbols-outlined icon">qr_code_2</span>
+            <span class="tool-name">Mã QR</span>
+          </a>
+
+          <a href="./password_manager/password_manager.html" class="tool-card">
+            <span class="material-symbols-outlined icon">password</span>
+            <span class="tool-name">Mật khẩu</span>
+          </a>
+          <a
+            href="./finance_calculator/finance_calculator.html"
+            class="tool-card"
+          >
+            <span class="material-symbols-outlined icon">percent</span>
+            <span class="tool-name">Tài chính</span>
+          </a>
+
+          <a href="./math_solver/math_solver.html" class="tool-card">
+            <span class="material-symbols-outlined icon">functions</span>
+            <span class="tool-name">Giải Toán</span>
+          </a>
+
+          <a href="./code_toolkit/code_toolkit.html" class="tool-card">
+            <span class="material-symbols-outlined icon">code_blocks</span>
+            <span class="tool-name">Xử lý Mã nguồn</span>
+          </a>
+
+          <a href="./network_toolkit/network_toolkit.html" class="tool-card">
+            <span class="material-symbols-outlined icon">lan</span>
+            <span class="tool-name">Tiện ích Mạng</span>
+          </a>
+
+          <a
+            href="./health_calculator/health_calculator.html"
+            class="tool-card"
+          >
+            <span class="material-symbols-outlined icon">monitor_weight</span>
+            <span class="tool-name">Sức khỏe</span>
+          </a>
+
+          <a
+            href="./date_calculator_logic/date_calculator.html"
+            class="tool-card"
+          >
+            <span class="material-symbols-outlined icon">calendar_month</span>
+            <span class="tool-name">Thời gian</span>
+          </a>
+
+          <a href="./assets/about.html" class="tool-card">
+            <span class="material-symbols-outlined icon">info</span>
+            <span class="tool-name">Giới thiệu</span>
+          </a>
+        </section>
+      </div>
+    </main>
+
+    <footer class="app-footer">© 2025 Made by Nam Trần with ❤️</footer>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trung tâm Thời gian - Công cụ Tiện ích</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script src="ephemeral-core.js" defer></script>
+  </head>
+  <body>
+    <div class="container" style="max-width: 800px">
+      <a href="../index.html" class="back-link">← Quay lại trang chủ</a>
+      <h1>Trung tâm Thời gian</h1>
+      <p class="subtitle">
+        Mọi công cụ bạn cần để tính toán và theo dõi thời gian.
+      </p>
+
+      <!-- TABS CHỌN CHỨC NĂNG -->
+      <div class="qr-tabs" style="justify-content: center; flex-wrap: wrap">
+        <button class="tab-btn active" data-tab="duration">Đếm Ngày</button>
+        <button class="tab-btn" data-tab="add-subtract">Cộng/Trừ Ngày</button>
+        <button class="tab-btn" data-tab="age">Tính Tuổi</button>
+        <button class="tab-btn" data-tab="countdown">Đếm ngược Sự kiện</button>
+      </div>
+
+      <!-- Chức năng 1: Đếm Ngày -->
+      <div class="tab-content active" id="tab-duration">
+        <!-- Giữ nguyên nội dung cũ -->
+        <div class="date-calc-grid">
+          <div class="form-group">
+            <label for="start-date">Ngày bắt đầu</label
+            ><input type="date" id="start-date" />
+          </div>
+          <div class="form-group">
+            <label for="end-date">Ngày kết thúc</label
+            ><input type="date" id="end-date" />
+          </div>
+        </div>
+        <div class="result-display" style="text-align: center">
+          <h3>Khoảng thời gian là:</h3>
+          <p
+            id="duration-result"
+            class="result-text"
+            style="font-size: 1.5em"
+          ></p>
+          <p id="duration-days-total" class="rate-info"></p>
+        </div>
+      </div>
+
+      <!-- Chức năng 2: Cộng/Trừ Ngày -->
+      <div class="tab-content" id="tab-add-subtract">
+        <!-- Giữ nguyên nội dung cũ -->
+        <div class="date-calc-grid">
+          <div class="form-group">
+            <label for="base-date">Bắt đầu từ ngày</label
+            ><input type="date" id="base-date" />
+          </div>
+          <div class="form-group">
+            <label>Cộng hoặc Trừ</label>
+            <div class="add-subtract-inputs">
+              <input type="number" id="years" placeholder="Năm" /><input
+                type="number"
+                id="months"
+                placeholder="Tháng"
+              /><input type="number" id="days" placeholder="Ngày" />
+            </div>
+          </div>
+        </div>
+        <div class="result-display" style="text-align: center">
+          <h3>Ngày kết quả là:</h3>
+          <p id="add-subtract-result" class="result-text"></p>
+        </div>
+      </div>
+
+      <!-- Chức năng 3: Tính Tuổi -->
+      <div class="tab-content" id="tab-age">
+        <div
+          class="form-group"
+          style="max-width: 400px; margin: 0 auto 30px auto"
+        >
+          <label for="birth-date">Nhập ngày sinh của bạn</label>
+          <input type="date" id="birth-date" />
+        </div>
+        <div class="result-display">
+          <h3 style="text-align: center">Tuổi của bạn là:</h3>
+          <p
+            id="age-result"
+            class="result-text"
+            style="font-size: 2em; text-align: center"
+          ></p>
+          <div class="age-details-grid">
+            <div class="detail-card">
+              <span class="detail-label">Cung Hoàng đạo</span
+              ><strong id="zodiac-sign">...</strong>
+            </div>
+            <div class="detail-card">
+              <span class="detail-label">Con Giáp</span
+              ><strong id="chinese-zodiac">...</strong>
+            </div>
+            <div class="detail-card">
+              <span class="detail-label">Sinh nhật tiếp theo</span
+              ><strong id="next-birthday">...</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chức năng 4: Đếm ngược Sự kiện -->
+      <div class="tab-content" id="tab-countdown">
+        <div class="date-calc-grid">
+          <div class="form-group">
+            <label for="event-name">Tên sự kiện</label>
+            <input
+              type="text"
+              id="event-name"
+              placeholder="VD: Tết Nguyên Đán"
+            />
+          </div>
+          <div class="form-group">
+            <label for="event-date">Ngày diễn ra sự kiện</label>
+            <input type="date" id="event-date" />
+          </div>
+        </div>
+        <div id="countdown-display" class="countdown-container">
+          <div class="countdown-item"><span id="cd-days">00</span>Ngày</div>
+          <div class="countdown-item"><span id="cd-hours">00</span>Giờ</div>
+          <div class="countdown-item"><span id="cd-minutes">00</span>Phút</div>
+          <div class="countdown-item"><span id="cd-seconds">00</span>Giây</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="date_calculator_logic.js" defer></script>
+  </body>
+</html>

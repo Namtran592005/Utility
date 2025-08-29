@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trung tâm Xử lý Mã nguồn - Công cụ Tiện ích</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- Thư viện CodeMirror -->
+    <link rel="stylesheet" href="./lib/codemirror.min.css" />
+    <link rel="stylesheet" href="./lib/material-darker.min.css" />
+    <!-- Thư viện JSON Viewer -->
+    <link rel="stylesheet" href="./lib/jquery.json-viewer.css" />
+    <script src="ephemeral-core.js" defer></script>
+  </head>
+  <!-- KÍCH HOẠT GIAO DIỆN TỐI -->
+  <body class="dark-theme">
+    <div class="container code-toolkit-container">
+      <a href="../index.html" class="back-link">← Quay lại trang chủ</a>
+      <header class="about-header" style="margin-bottom: 20px">
+        <h1>Trung tâm Xử lý Mã nguồn</h1>
+        <p class="subtitle">
+          Công cụ tất-cả-trong-một để định dạng, tối ưu và chuyển đổi mã nguồn &
+          dữ liệu.
+        </p>
+      </header>
+
+      <!-- BẢNG ĐIỀU KHIỂN MỚI -->
+      <div class="control-panel">
+        <div class="form-group">
+          <label for="tool-select">Chọn công cụ:</label>
+          <select id="tool-select"></select>
+        </div>
+        <div class="actions-group">
+          <button id="process-btn" class="btn">
+            <span id="process-btn-text">Định dạng &nbsp;</span>
+          </button>
+          <button id="copy-output-btn" class="btn btn-secondary">
+            Sao chép Kết quả
+          </button>
+          <button id="clear-btn" class="btn btn-danger">Xóa tất cả</button>
+        </div>
+      </div>
+
+      <!-- LAYOUT EDITOR CHÍNH -->
+      <div class="toolkit-main-layout">
+        <div class="editor-pane">
+          <label id="input-label">Đầu vào</label>
+          <textarea id="input-editor"></textarea>
+        </div>
+        <div class="editor-pane">
+          <label id="output-label">Đầu ra</label>
+          <div id="output-wrapper">
+            <textarea id="output-editor"></textarea>
+            <div id="json-viewer"></div>
+          </div>
+        </div>
+      </div>
+      <div id="status-bar" class="status-bar"></div>
+    </div>
+
+    <!-- Tải các thư viện JavaScript -->
+    <script src="./lib/codemirror.min.js"></script>
+    <script src="./lib/javascript.min.js"></script>
+    <script src="./lib/css.min.js"></script>
+    <script src="./lib/xml.min.js"></script>
+    <script src="./lib/sql.min.js"></script>
+    <script src="./lib/beautify.min.js"></script>
+    <script src="./lib/beautify-css.min.js"></script>
+    <script src="./lib/beautify-html.min.js"></script>
+    <script src="./lib/bundle.min.js"></script>
+    <script src="./lib/sql-formatter.min.js"></script>
+    <script src="./lib/jquery-3.7.1.min.js"></script>
+    <script src="./lib/jquery.json-viewer.js"></script>
+
+    <script src="code_toolkit_logic.js" defer></script>
+  </body>
+</html>

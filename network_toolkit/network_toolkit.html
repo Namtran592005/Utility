@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trung tâm Tiện ích Mạng - Công cụ Tiện ích</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- Xóa thư viện ip-address vì không còn sử dụng -->
+     <script src="ephemeral-core.js" defer></script>
+  </head>
+  <body>
+    <div class="container" style="max-width: 900px">
+      <a href="../index.html" class="back-link">← Quay lại trang chủ</a>
+      <h1>Trung tâm Tiện ích Mạng</h1>
+      <p class="subtitle">
+        Bộ công cụ toàn diện để phân tích và tính toán các thông số mạng.
+      </p>
+
+      <!-- CATEGORY TABS -->
+      <div class="qr-tabs" style="justify-content: center; flex-wrap: wrap">
+        <button class="tab-btn active" data-tab="subnet">
+          Subnet Calculator
+        </button>
+        <button class="tab-btn" data-tab="ip-lookup">IP Geolocation</button>
+        <button class="tab-btn" data-tab="dns-lookup">DNS Lookup</button>
+        <button class="tab-btn" data-tab="my-ip">What's My IP?</button>
+      </div>
+
+      <!-- Chức năng 1: Subnet Calculator -->
+      <div class="tab-content active" id="tab-subnet">
+        <div class="form-group">
+          <label for="subnet-input"
+            >Nhập địa chỉ IP và CIDR (ví dụ: 192.168.1.0/26)</label
+          >
+          <input
+            type="text"
+            id="subnet-input"
+            placeholder="192.168.1.0/26"
+            value="192.168.1.0/26"
+          />
+        </div>
+        <button id="calculate-subnet-btn" class="btn" style="width: 100%">
+          Phân tích Subnet
+        </button>
+        <div id="subnet-main-results" class="results-container"></div>
+        <div id="subnet-binary-results" class="results-container"></div>
+        <div id="subnet-list-container" class="results-container"></div>
+      </div>
+
+      <!-- Chức năng 2: IP Geolocation -->
+      <div class="tab-content" id="tab-ip-lookup">
+        <div class="form-group">
+          <label for="ip-lookup-input">Nhập địa chỉ IP cần tra cứu</label
+          ><input type="text" id="ip-lookup-input" placeholder="8.8.8.8" />
+        </div>
+        <button id="lookup-ip-btn" class="btn" style="width: 100%">
+          Tra cứu
+        </button>
+        <div id="ip-lookup-results" class="results-container"></div>
+      </div>
+
+      <!-- Chức năng 3: DNS Lookup -->
+      <div class="tab-content" id="tab-dns-lookup">
+        <div class="form-group">
+          <label for="dns-lookup-input">Nhập tên miền</label
+          ><input type="text" id="dns-lookup-input" placeholder="google.com" />
+        </div>
+        <button id="lookup-dns-btn" class="btn" style="width: 100%">
+          Tra cứu DNS
+        </button>
+        <div id="dns-lookup-results" class="results-container"></div>
+      </div>
+
+      <!-- Chức năng 4: What's My IP? -->
+      <div class="tab-content" id="tab-my-ip" style="text-align: center">
+        <button
+          id="find-my-ip-btn"
+          class="btn"
+          style="width: auto; margin-bottom: 20px"
+        >
+          Hiển thị thông tin IP của tôi
+        </button>
+        <!-- THAY ĐỔI: Sử dụng results-container để nhất quán -->
+        <div id="my-ip-display" class="results-container"></div>
+      </div>
+    </div>
+
+    <script src="network_toolkit_logic.js" defer></script>
+  </body>
+</html>

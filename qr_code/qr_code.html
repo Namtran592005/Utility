@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tạo Mã QR - Công cụ Tiện ích</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script type="text/javascript" src="lib/qr-code-styling.js"></script>
+    <script src="ephemeral-core.js" defer></script>
+  </head>
+  <body>
+    <div class="container" style="max-width: 960px">
+      <a href="../index.html" class="back-link">← Quay lại trang chủ</a>
+      <h1>Tạo Mã QR</h1>
+      <p class="subtitle">
+        Tạo mã QR cho văn bản, Wi-Fi, danh thiếp và tùy chỉnh giao diện theo ý
+        muốn.
+      </p>
+
+      <div class="qr-main-layout">
+        <div class="qr-options-panel">
+          <div class="qr-tabs">
+            <button class="tab-btn active" data-tab="text">
+              Văn bản / URL
+            </button>
+            <button class="tab-btn" data-tab="wifi">Wi-Fi</button>
+            <button class="tab-btn" data-tab="vcard">Danh thiếp</button>
+          </div>
+
+          <div class="tab-content active" id="tab-text">
+            <textarea
+              id="text-input"
+              rows="4"
+              placeholder="Nhập văn bản hoặc URL..."
+            ></textarea>
+          </div>
+          <div class="tab-content" id="tab-wifi">
+            <input type="text" id="wifi-ssid" placeholder="Tên mạng (SSID)" />
+            <input type="password" id="wifi-pass" placeholder="Mật khẩu" />
+            <select id="wifi-encryption">
+              <!-- THAY ĐỔI: Thêm WPA3 -->
+              <option value="WPA3">WPA3</option>
+              <option value="WPA" selected>WPA/WPA2</option>
+              <option value="WEP">WEP</option>
+              <option value="nopass">Không có mật khẩu</option>
+            </select>
+          </div>
+          <div class="tab-content" id="tab-vcard">
+            <input type="text" id="vcard-name" placeholder="Họ và Tên" />
+            <input type="tel" id="vcard-phone" placeholder="Số điện thoại" />
+            <input type="email" id="vcard-email" placeholder="Email" />
+            <input type="url" id="vcard-url" placeholder="Website (tùy chọn)" />
+          </div>
+
+          <details class="options-section" open>
+            <summary>Tùy chỉnh Giao diện</summary>
+            <div class="option-grid">
+              <div class="form-group">
+                <label for="dot-color">Màu chấm QR</label>
+                <input type="color" id="dot-color" value="#000000" />
+              </div>
+              <div class="form-group">
+                <label for="bg-color">Màu nền</label>
+                <input type="color" id="bg-color" value="#ffffff" />
+              </div>
+              <div class="form-group">
+                <label for="dots-style">Kiểu chấm</label>
+                <select id="dots-style">
+                  <option value="square" selected>Vuông</option>
+                  <option value="dots">Tròn</option>
+                  <option value="rounded">Vuông bo góc</option>
+                  <option value="classy">Classy</option>
+                  <option value="classy-rounded">Classy bo góc</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="corners-style">Kiểu góc</label>
+                <select id="corners-style">
+                  <option value="square" selected>Vuông</option>
+                  <option value="dot">Tròn</option>
+                  <option value="extra-rounded">Bo góc nhiều</option>
+                </select>
+              </div>
+              <!-- THAY ĐỔI: Cập nhật cấu trúc HTML cho file upload -->
+              <div class="form-group logo-group">
+                <label>Thêm Logo</label>
+                <div class="custom-file-upload">
+                  <input type="file" id="logo-upload" accept="image/*" />
+                  <span class="file-name" id="logo-filename"
+                    >Chưa chọn tệp nào</span
+                  >
+                  <label for="logo-upload" class="btn-file">Chọn tệp...</label>
+                </div>
+                <button id="remove-logo" class="btn-remove">Xóa Logo</button>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="qr-preview-panel">
+          <div id="canvas"></div>
+          <div class="download-group">
+            <select id="download-format">
+              <option value="png" selected>PNG</option>
+              <option value="jpeg">JPEG</option>
+              <option value="svg">SVG</option>
+              <option value="webp">WEBP</option>
+            </select>
+            <button id="download-btn" class="btn">Tải xuống</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="qr_code_logic.js" defer></script>
+  </body>
+</html>
