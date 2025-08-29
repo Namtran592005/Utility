@@ -1,7 +1,7 @@
 # Trang Công cụ Tiện ích | All-in-One Utility Tools Website
 
 [![Giấy phép: MIT](https://img.shields.io/badge/Giấy%20phép-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Tình trạng: Hoạt động](https://img.shields.io/badge/Tình%20trạng-Hoạt%20động-brightgreen)](https://github.com/Namtran592005/ultility)
+[![Tình trạng: Hoạt động](https://img.shields.io/badge/Tình%20trạng-Hoạt%20động-brightgreen)](https://github.com/Namtran592005/utility)
 [![PWA Capable](https://img.shields.io/badge/PWA-Capable-5A0FC8?logo=pwa)](https://web.dev/progressive-web-apps/)
 [![Privacy First](https://img.shields.io/badge/Privacy-First-red)](./ephemeral-core.js)
 
