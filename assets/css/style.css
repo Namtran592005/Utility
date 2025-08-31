@@ -1749,3 +1749,200 @@ body.dark-theme .dns-record {
     flex-direction: column;
   }
 }
+
+/* 17. KIỂU DÁNG TRUNG TÂM XỬ LÝ VĂN BẢN (text_toolkit.html)
+------------------------------------------------------------*/
+.text-toolkit-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px; /* Cột chính linh hoạt, sidebar cố định */
+  gap: var(--spacing-lg);
+}
+
+.main-content-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  height: 65vh; /* Chiều cao cố định để sidebar hoạt động tốt */
+  flex-grow: 1;
+}
+
+.text-pane {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  transition: background-color var(--transition-speed),
+    border-color var(--transition-speed);
+}
+
+.text-pane label {
+  font-weight: 500;
+  color: var(--text-color-light);
+  margin-bottom: var(--spacing-sm);
+}
+
+.text-pane textarea {
+  flex-grow: 1;
+  resize: none;
+  border: none;
+  background-color: transparent;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.95em;
+  color: var(--text-color);
+  padding: var(--spacing-sm);
+  line-height: 1.6;
+}
+.text-pane textarea:focus {
+  outline: none;
+}
+
+.main-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.toolkit-sidebar {
+  position: sticky;
+  top: 100px; /* Dính lại khi cuộn, cách header một khoảng */
+  align-self: flex-start; /* Quan trọng để sticky hoạt động đúng */
+  height: calc(100vh - 120px); /* Đảm bảo có thể cuộn nếu nội dung dài */
+  overflow-y: auto;
+  padding-right: var(--spacing-sm); /* Khoảng đệm cho thanh cuộn */
+}
+
+.inspector-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+  background-color: var(--bg-color);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transition: background-color var(--transition-speed),
+    border-color var(--transition-speed);
+}
+.stat-item .stat-label {
+  display: block;
+  font-size: 0.8em;
+  color: var(--text-color-light);
+}
+.stat-item .stat-value {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.tool-group {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  margin-bottom: var(--spacing-md);
+  transition: background-color var(--transition-speed),
+    border-color var(--transition-speed);
+}
+.tool-group summary {
+  font-weight: 500;
+  padding: 12px 15px;
+  cursor: pointer;
+  outline: none;
+}
+.tool-group > div {
+  /* Áp dụng padding cho nội dung bên trong <details> */
+  padding: 0 15px 15px 15px;
+  border-top: 1px solid var(--border-color);
+}
+.tool-group[open] summary {
+  color: var(--primary-color);
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+}
+.button-grid-single {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-sm);
+}
+.button-grid .btn,
+.button-grid-single .btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 0.9em;
+}
+
+.find-replace-group input,
+.lorem-ipsum-group input {
+  margin-bottom: var(--spacing-sm);
+}
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.9em;
+  margin-bottom: var(--spacing-md);
+  cursor: pointer;
+}
+
+/* Responsive cho Text Toolkit */
+@media (max-width: 992px) {
+  .text-toolkit-layout {
+    grid-template-columns: 1fr; /* Chuyển thành 1 cột */
+  }
+  .toolkit-sidebar {
+    position: static; /* Bỏ dính */
+    height: auto;
+    margin-top: var(--spacing-lg);
+    overflow-y: visible;
+    padding-right: 0;
+  }
+  .editor-grid {
+    height: 50vh; /* Giảm chiều cao trên mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  .editor-grid {
+    grid-template-columns: 1fr; /* Chồng 2 ô input/output lên nhau */
+    height: auto;
+    min-height: 60vh;
+  }
+}
+
+.analysis-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+  padding: 15px;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.external-link-btn {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  background-color: #555c64 !important; /* Màu xám đậm hơn cho link ngoài */
+  text-align: left;
+}
+.external-link-btn:hover {
+  background-color: #4a5056 !important;
+}
+.external-link-btn .material-symbols-outlined {
+  font-size: 18px;
+}
+
+

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trung tâm Xử lý Văn bản - Công cụ Tiện ích</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script src="../ephemeral-core.js" defer></script>
+  </head>
+  <body>
+    <div class="container" style="max-width: 1100px">
+      <a href="../index.html" class="back-link">← Quay lại trang chủ</a>
+      <h1>Trung tâm Xử lý Văn bản</h1>
+      <p class="subtitle">
+        Bộ công cụ đa năng để kiểm tra, định dạng và biến đổi văn bản của bạn
+        ngay lập tức.
+      </p>
+
+      <div class="text-toolkit-layout">
+        <div class="main-content-column">
+          <div class="editor-grid">
+            <div class="text-pane">
+              <label for="text-input">Văn bản gốc</label>
+              <!-- KÍCH HOẠT KIỂM TRA CHÍNH TẢ CỦA TRÌNH DUYỆT -->
+              <textarea
+                id="text-input"
+                placeholder="Dán văn bản của bạn vào đây..."
+                spellcheck="true"
+              ></textarea>
+            </div>
+            <div class="text-pane">
+              <label for="text-output">Kết quả</label>
+              <textarea
+                id="text-output"
+                readonly
+                placeholder="Kết quả sẽ hiển thị ở đây..."
+              ></textarea>
+            </div>
+          </div>
+          <div class="main-actions">
+            <button id="copy-btn" class="btn btn-secondary">
+              Sao chép Kết quả
+            </button>
+            <button id="clear-btn" class="btn btn-danger">Xóa tất cả</button>
+          </div>
+        </div>
+
+        <aside class="toolkit-sidebar">
+          <div class="inspector-panel">
+            <div class="stat-item">
+              <span class="stat-label">Ký tự</span
+              ><span id="char-count" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Từ</span
+              ><span id="word-count" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Dòng</span
+              ><span id="line-count" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Câu</span
+              ><span id="sentence-count" class="stat-value">0</span>
+            </div>
+          </div>
+
+          <!-- MỤC MỚI: PHÂN TÍCH & SỬA LỖI -->
+          <details class="tool-group" open>
+            <summary>Phân tích & Sửa lỗi</summary>
+            <div class="analysis-panel">
+              <div class="stat-item">
+                <span class="stat-label">Thời gian đọc (ước tính)</span>
+                <span id="reading-time" class="stat-value">0 phút</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Độ dễ đọc (Flesch)</span>
+                <span id="readability-score" class="stat-value">N/A</span>
+              </div>
+            </div>
+            <div class="button-grid-single" style="padding: 15px">
+              <a
+                id="google-translate-btn"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn external-link-btn"
+              >
+                Dịch với Google Translate
+                <span class="material-symbols-outlined">open_in_new</span>
+              </a>
+              <a
+                id="grammarly-btn"
+                href="https://www.grammarly.com/plagiarism-checker"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn external-link-btn"
+              >
+                Kiểm tra Ngữ pháp
+                <span class="material-symbols-outlined">open_in_new</span>
+              </a>
+            </div>
+          </details>
+
+          <details class="tool-group">
+            <summary>Chuyển đổi Kiểu chữ</summary>
+            <div class="button-grid">
+              <button
+                class="btn btn-secondary tool-btn"
+                data-action="uppercase"
+              >
+                IN HOA
+              </button>
+              <button
+                class="btn btn-secondary tool-btn"
+                data-action="lowercase"
+              >
+                in thường
+              </button>
+              <button
+                class="btn btn-secondary tool-btn"
+                data-action="titlecase"
+              >
+                Kiểu Tiêu Đề
+              </button>
+              <button
+                class="btn btn-secondary tool-btn"
+                data-action="sentencecase"
+              >
+                Kiểu câu
+              </button>
+            </div>
+          </details>
+
+          <details class="tool-group">
+            <summary>Công cụ Dòng</summary>
+            <div class="button-grid-single">
+              <button class="btn btn-secondary tool-btn" data-action="sort">
+                Sắp xếp dòng (A-Z)
+              </button>
+              <button class="btn btn-secondary tool-btn" data-action="reverse">
+                Đảo ngược các dòng
+              </button>
+              <button
+                class="btn btn-secondary tool-btn"
+                data-action="remove-duplicates"
+              >
+                Xóa dòng trùng lặp
+              </button>
+              <button
+                class="btn btn-secondary tool-btn"
+                data-action="remove-empty"
+              >
+                Xóa dòng trống
+              </button>
+            </div>
+          </details>
+
+          <details class="tool-group">
+            <summary>Tìm & Thay thế</summary>
+            <div class="find-replace-group">
+              <input type="text" id="find-input" placeholder="Tìm kiếm..." />
+              <input
+                type="text"
+                id="replace-input"
+                placeholder="Thay thế bằng..."
+              />
+              <label class="checkbox-label">
+                <input type="checkbox" id="case-sensitive-checkbox" /> Phân biệt
+                hoa/thường
+              </label>
+              <button
+                class="btn tool-btn"
+                data-action="replace-all"
+                style="width: 100%"
+              >
+                Thay thế Tất cả
+              </button>
+            </div>
+          </details>
+        </aside>
+      </div>
+    </div>
+
+    <script src="text_toolkit_logic.js" defer></script>
+  </body>
+</html>
