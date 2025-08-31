@@ -1945,4 +1945,227 @@ body.dark-theme .dns-record {
   font-size: 18px;
 }
 
+/*
+============================================================
+18. KIỂU DÁNG TRUNG TÂM TRUYỀN TỆP (file_transfer.html)
+============================================================
+*/
 
+/* --- Container chính & Bố cục chung --- */
+.file-transfer-container {
+  max-width: 550px; /* Giới hạn chiều rộng để tập trung hơn */
+}
+
+/* --- Khối Trạng thái & Kết nối --- */
+.connection-block {
+  background-color: var(--surface-color);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-lg);
+  transition: all var(--transition-speed) ease;
+}
+
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  font-size: 1.1em;
+}
+
+#status-text {
+  font-weight: 500;
+  color: var(--text-color-light);
+  transition: color var(--transition-speed);
+}
+#status-text.connecting {
+  color: var(--warning-color);
+}
+#status-text.connected {
+  color: var(--success-color);
+}
+#status-text.error {
+  color: var(--danger-color);
+}
+
+.my-id-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-color);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+}
+#my-id {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: 2px; /* Tăng khoảng cách ký tự cho dễ đọc */
+}
+#copy-id-btn {
+  width: auto;
+  padding: 8px 12px;
+  font-size: 0.9em;
+  background-color: var(--surface-color);
+  color: var(--text-color-light);
+  border: 1px solid var(--border-color);
+}
+#copy-id-btn:hover {
+  background-color: #e9ecef;
+  color: var(--text-color);
+}
+body.dark-theme #copy-id-btn {
+  background-color: #2a2f42;
+}
+body.dark-theme #copy-id-btn:hover {
+  background-color: #3b4261;
+}
+
+.peer-connect-form {
+  display: flex;
+  gap: var(--spacing-md);
+}
+.peer-connect-form input {
+  flex-grow: 1;
+  font-size: 1.2em;
+  font-family: "Roboto Mono", monospace;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.peer-connect-form .btn {
+  flex-shrink: 0; /* Không co lại */
+}
+
+/* --- Khối Truyền Tệp --- */
+.transfer-panel {
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.transfer-panel.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#transfer-heading {
+  text-align: center;
+  color: var(--success-color);
+  font-size: 1.2em;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* --- Tùy chỉnh Input File --- */
+.custom-file-input-wrapper {
+  position: relative;
+  background-color: var(--bg-color);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  margin-bottom: var(--spacing-lg);
+}
+.custom-file-input-wrapper:hover,
+.custom-file-input-wrapper.dragover {
+  border-color: var(--primary-color);
+  background-color: #e9f3ff;
+}
+body.dark-theme .custom-file-input-wrapper:hover,
+body.dark-theme .custom-file-input-wrapper.dragover {
+  background-color: #2a2f42;
+}
+.custom-file-input-wrapper .material-symbols-outlined {
+  font-size: 48px;
+  color: var(--primary-color);
+}
+.custom-file-input-wrapper p {
+  margin: var(--spacing-sm) 0 0;
+  font-weight: 500;
+  color: var(--text-color-light);
+}
+#file-input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+#selected-file-name {
+  margin-top: var(--spacing-md);
+  font-style: italic;
+  color: var(--text-color);
+  font-weight: 500;
+}
+#selected-file-name:empty {
+  display: none;
+}
+
+/* --- Khối Tiến Trình --- */
+.progress-container {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.progress-container.visible {
+  opacity: 1;
+}
+
+#progress-bar-wrapper {
+  width: 100%;
+  background-color: var(--bg-color);
+  border-radius: 5px;
+  overflow: hidden;
+  margin: var(--spacing-sm) 0;
+  border: 1px solid var(--border-color);
+}
+#progress-bar {
+  height: 12px; /* Cao hơn một chút */
+  background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+  border-radius: 5px;
+  transition: width 0.2s ease-out; /* Hiệu ứng mượt mà khi thanh progress chạy */
+}
+
+.progress-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: var(--text-color-light);
+}
+
+/* --- Hiệu ứng & Trạng thái --- */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#send-btn.sending {
+  animation: pulse 1.5s infinite;
+}
+
+/* --- Lời nhắc Tải xuống --- */
+#download-prompt {
+  background-color: var(--bg-color);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--success-color);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+#download-prompt.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

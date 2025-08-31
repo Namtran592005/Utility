@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Truyền Tệp P2P - Công cụ Tiện ích</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <!-- Nhúng thư viện PeerJS từ CDN -->
+    <!-- Tải thư viện StreamSaver với tên tệp chính xác -->
+
+    <script src="lib/peerjs.min.js"></script>
+  </head>
+  <body>
+    <div class="container file-transfer-container">
+      <a href="../index.html" class="back-link">← Quay lại trang chủ</a>
+      <h1>Truyền Tệp An Toàn (P2P)</h1>
+      <p class="subtitle">
+        Kết nối trực tiếp và gửi tệp an toàn, không qua máy chủ trung gian.
+      </p>
+      <!-- KHỐI KẾT NỐI -->
+      <div class="connection-block">
+        <div class="status-line">
+          <span class="material-symbols-outlined">wifi</span>
+          <span id="status-text">Đang khởi tạo...</span>
+        </div>
+        <div class="my-id-container">
+          <div>
+            <p
+              style="
+                font-size: 0.9em;
+                margin: 0;
+                color: var(--text-color-light);
+              "
+            >
+              ID của bạn:
+            </p>
+            <strong id="my-id">...</strong>
+          </div>
+          <button id="copy-id-btn" class="btn">Sao chép</button>
+        </div>
+
+        <hr
+          style="margin: var(--spacing-lg) 0; border-color: var(--border-color)"
+        />
+
+        <label
+          for="peer-id-input"
+          style="
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
+          "
+          >Kết nối với ID khác:</label
+        >
+        <div class="peer-connect-form">
+          <input
+            type="text"
+            id="peer-id-input"
+            placeholder="Nhập ID người nhận"
+          />
+          <button id="connect-btn" class="btn">Kết nối</button>
+        </div>
+      </div>
+
+      <!-- KHỐI TRUYỀN TỆP (hiển thị sau khi kết nối) -->
+      <div id="transfer-panel" class="connection-block" style="display: none">
+        <h3 id="transfer-heading">Đã kết nối với ...</h3>
+
+        <!-- Input file được tùy chỉnh -->
+        <div class="custom-file-input-wrapper" id="drop-zone">
+          <span class="material-symbols-outlined">upload_file</span>
+          <p>Kéo và thả tệp vào đây, hoặc nhấn để chọn</p>
+          <input type="file" id="file-input" />
+        </div>
+        <p id="selected-file-name"></p>
+
+        <button
+          id="send-btn"
+          class="btn btn-success"
+          style="width: 100%"
+          disabled
+        >
+          <span class="material-symbols-outlined" style="margin-right: 8px"
+            >send</span
+          >
+          Gửi Tệp
+        </button>
+
+        <!-- KHỐI TIẾN TRÌNH -->
+        <div
+          id="progress-container"
+          style="display: none; margin-top: var(--spacing-lg)"
+        >
+          <div id="progress-bar-wrapper">
+            <div id="progress-bar" style="width: 0%"></div>
+          </div>
+          <div class="progress-details">
+            <span id="progress-filename"></span>
+            <span id="progress-text">0%</span>
+          </div>
+        </div>
+        <div
+          id="download-prompt"
+          style="
+            display: none;
+            margin-top: var(--spacing-lg);
+            text-align: center;
+          "
+        >
+          <p id="download-prompt-filename" style="font-weight: 500"></p>
+          <button id="save-file-btn" class="btn btn-success">
+            <span class="material-symbols-outlined" style="margin-right: 8px"
+              >download</span
+            >
+            Lưu Tệp
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tệp logic không thay đổi, chỉ cần đổi tên nếu cần -->
+    <script src="./lib/StreamSaver.js"></script>
+    <script src="file_transfer_logic.js" defer></script>
+  </body>
+</html>
