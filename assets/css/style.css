@@ -2169,3 +2169,126 @@ body.dark-theme .custom-file-input-wrapper.dragover {
   opacity: 1;
   transform: translateY(0);
 }
+
+/*
+============================================================
+19. KIỂU DÁNG TRUNG TÂM GỬI MAIL (email_sender.html)
+============================================================
+*/
+
+.email-sender-container {
+  max-width: 800px;
+}
+
+.email-sender-block {
+  background-color: var(--surface-color);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--border-color);
+  margin-bottom: var(--spacing-lg);
+  transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+
+.email-sender-block h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-color);
+  font-size: 1.2em;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.note {
+  font-size: 0.9em;
+  color: var(--text-color-light);
+  margin-top: -8px;
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+.note .material-symbols-outlined {
+  font-size: 18px;
+}
+.note.error { color: var(--danger-color); }
+.note.success { color: var(--success-color); }
+
+.email-list-container .email-input-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.email-list-container .email-input-group input {
+  flex-grow: 1;
+}
+
+.email-list-container .icon-btn {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, color 0.2s;
+}
+.email-list-container .icon-btn.add { color: var(--success-color); }
+.email-list-container .icon-btn.remove { color: var(--danger-color); }
+.email-list-container .icon-btn:hover { background-color: var(--bg-color); }
+
+.custom-file-upload {
+    display: flex;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+.custom-file-upload .file-name {
+    flex-grow: 1;
+    padding: 0 15px;
+    align-self: center;
+    color: var(--text-color-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.custom-file-upload .btn-file {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+.custom-file-upload .btn-file:hover {
+    background-color: #5a6268;
+}
+
+/* Animation cho nút Gửi */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
